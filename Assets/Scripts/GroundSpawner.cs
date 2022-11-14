@@ -9,8 +9,16 @@ public class GroundSpawner : MonoBehaviour
 
     public void spawnTile()
     {
-        GameObject currentFloor = Instantiate(floorTile, nextGroundItem, Quaternion.identity);
-        nextGroundItem = currentFloor.transform.GetChild(1).transform.position;
+        GameObject floor = GroundPool.groundPoolSingleton.GetGroundObject();
+
+        if(floor != null)
+        {
+            floor.transform.position = nextGroundItem;
+            floor.transform.rotation = Quaternion.identity;
+            nextGroundItem = floor.transform.GetChild(1).transform.position;
+            floor.SetActive(true);
+        }
+       // GameObject currentFloor = Instantiate(floorTile, nextGroundItem, Quaternion.identity);      
     }
     
     

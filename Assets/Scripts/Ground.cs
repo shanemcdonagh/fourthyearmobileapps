@@ -7,6 +7,7 @@ public class Ground : MonoBehaviour
 
     // Instance variable - To use methods within GroundSpawner
     GroundSpawner gs;
+    public List<GameObject> obstacles;
 
 
     // Start is called before the first frame update
@@ -22,13 +23,28 @@ public class Ground : MonoBehaviour
         // Spawn a new ground area for the player to traverse on
         gs.spawnTile();
 
-        // Destroy this current gameobject after 3 seconds (after player precedes past it)
-        Destroy(this.gameObject,3.0f);
+        // Invoke method which deactivates gameobject after 3 seconds
+        Invoke("SetToFalse",3.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void SetToFalse()
+    {
+        // Deactivate object so it returns to pool
+        gameObject.SetActive(false);
+    }
+
+    private void SpawnEnemyObstacle()
+    {
+        // Select a random point to spawn the obstacle
+        int randomSpawnPoint = Random.Range(2,5);
+
+        // Select a random obstacle to spawn
+        int randomObstacle = Random.Range(0,2);
     }
 }
