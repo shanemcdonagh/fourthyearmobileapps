@@ -28,8 +28,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        Vector3 moveForward = transform.forward * playerSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + moveForward);
+        // First, check if the player still is alive (has health remaining)
+        if(!isPlayerDead)
+        {
+            Vector3 moveForward = transform.forward * playerSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + moveForward);
+        } 
     }
     
     // Update is called once per frame

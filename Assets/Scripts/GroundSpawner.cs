@@ -20,8 +20,7 @@ public class GroundSpawner : MonoBehaviour
         }
        // GameObject currentFloor = Instantiate(floorTile, nextGroundItem, Quaternion.identity);      
     }
-    
-    
+
     // Start is called before the first frame update
     void Start()
     {
