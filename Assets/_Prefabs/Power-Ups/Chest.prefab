@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 30
+  turnSpeed: 90
 --- !u!1001 &8661981959356745738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1286578538285941721, guid: e8a00b34f21a6804db768b3cde88cd76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.895
       objectReference: {fileID: 0}
     - target: {fileID: 1286578538285941721, guid: e8a00b34f21a6804db768b3cde88cd76, type: 3}
       propertyPath: m_LocalPosition.z

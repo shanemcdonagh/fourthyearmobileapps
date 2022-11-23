@@ -12,14 +12,12 @@ public class Powers : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         // If the powerup is spawned on an obstacle
-        if (other.gameObject.GetComponent<Obstacle>() != null) 
+        if (other.gameObject.tag != "Player") 
         {
             Destroy(gameObject);
             return;
         }
-        
-        // Check if the gameobject in question is the player
-        if(other.gameObject.tag == "Player")
+        else if(other.gameObject.tag == "Player")
         {
             // Update the player score
             GameObject.FindObjectOfType<GameBehaviour>().updateHighScore(points);
@@ -31,6 +29,7 @@ public class Powers : MonoBehaviour
     private void Update() 
     {
         // Rotate the gameObject
-        transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
+        transform.Rotate(0, turnSpeed * Time.deltaTime, 0);
+
     }
 }

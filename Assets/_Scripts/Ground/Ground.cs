@@ -8,6 +8,7 @@ public class Ground : MonoBehaviour
     // Instance variable - To use methods within GroundSpawner
     GroundSpawner gs;
     public List<GameObject> obstacles;
+    public List<GameObject> powers;
     private bool firstPlatform;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Ground : MonoBehaviour
         gs = GameObject.FindObjectOfType<GroundSpawner>();
 
         SpawnEnemyObstacle();
+        SpawnPowers();
     }
 
     // Method: Triggered when an object or collider exits the collider on the current game object
@@ -60,9 +62,6 @@ public class Ground : MonoBehaviour
 
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
-        // Select a random obstacle
-       // GameObject obstacle = obstacles[Random.Range(0,2)];
-
         // Select the first obstacle in the array initially
         GameObject obstacle = obstacles[0];
 
@@ -74,15 +73,38 @@ public class Ground : MonoBehaviour
 
         } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
 
-        // if(obstacle.tag == "Barrier")
-        // {
-        //     spawn.position = new Vector3(spawn.position.x, -0.26f, transform.position.z);
-        // }
-
         // Instantiate the obstacle at the random spawn point and make it a parent of ground tile
         // This is important as it will destroy the obstacles as the ground gets destroyed
         Instantiate(obstacle, new Vector3(spawn.position.x,obstacle.transform.position.y,spawn.position.z), obstacle.transform.rotation, transform);
 
+    }
+
+    private void SpawnPowers()
+    {
+
+        // Find a way to decrease odds of heart and increase odds of cheese
+
+        // First, check if the player still is alive (has health remaining)
+        if(PlayerBehaviour.isPlayerDead)
+        {
+            // If the player is dead, exit the method
+            return;
+        }
+
+        // Shuffle the list of obstacles to use
+        Utils.Shuffle(powers);
+
+        // Select a random point to spawn the obstacle
+        int randomSpawnPoint = Random.Range(2,5);
+
+        Transform spawn = transform.GetChild(randomSpawnPoint).transform;
+
+        // Select a random power from the list
+        GameObject power = powers[Random.Range(0,3)];
+
+        // Instantiate the power at the random spawn point and make it a parent of ground tile
+        // This is important as it will destroy and powers left over if the player doesn't pick them up
+        Instantiate(power, new Vector3(spawn.position.x,power.transform.position.y,spawn.position.z), power.transform.rotation, transform);
     }
 }
 
