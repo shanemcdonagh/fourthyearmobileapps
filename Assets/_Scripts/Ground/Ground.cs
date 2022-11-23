@@ -70,7 +70,7 @@ public class Ground : MonoBehaviour
         do
         {
             // Select a random obstacle
-            obstacle = obstacles[Random.Range(0,2)];
+            obstacle = obstacles[Random.Range(0,3)];
 
         } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
 

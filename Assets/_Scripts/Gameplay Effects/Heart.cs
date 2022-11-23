@@ -5,6 +5,7 @@ using UnityEngine;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private float health = 30;
+    [SerializeField] private float turnSpeed = 90f;
 
     // Activates when the something collides with the cheese
     private void OnTriggerEnter(Collider other) 
@@ -24,5 +25,11 @@ public class Heart : MonoBehaviour
             
             Destroy(gameObject);
         }
+    }
+
+    private void Update() 
+    {
+        // Rotate the gameObject
+        transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
     }
 }
