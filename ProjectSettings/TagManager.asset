@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Barrier
   - Cat
+  - Cheese
+  - Chest
+  - Star
+  - Heart
   layers:
   - Default
   - TransparentFX
