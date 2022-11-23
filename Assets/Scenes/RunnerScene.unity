@@ -299,9 +299,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2927436842535408532, guid: 903fafbe76067254790f2d8972e198ca, type: 3}
-      propertyPath: amountToPool
-      value: 20
+    - target: {fileID: 2840143340714842172, guid: 903fafbe76067254790f2d8972e198ca, type: 3}
+      propertyPath: currLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2927436842535408537, guid: 903fafbe76067254790f2d8972e198ca, type: 3}
       propertyPath: m_Name

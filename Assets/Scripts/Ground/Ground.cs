@@ -8,7 +8,7 @@ public class Ground : MonoBehaviour
     // Instance variable - To use methods within GroundSpawner
     GroundSpawner gs;
     public List<GameObject> obstacles;
-
+    private bool firstPlatform;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +36,6 @@ public class Ground : MonoBehaviour
         Invoke("SetToFalse",3.0f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SetToFalse()
     {
         // Deactivate object so it returns to pool
@@ -63,10 +57,22 @@ public class Ground : MonoBehaviour
 
         // Select a random point to spawn the obstacle
         int randomSpawnPoint = Random.Range(2,5);
+
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Select a random obstacle
-        GameObject obstacle = obstacles[Random.Range(0,2)];
+       // GameObject obstacle = obstacles[Random.Range(0,2)];
+
+        // Select the first obstacle in the array initially
+        GameObject obstacle = obstacles[0];
+
+        // Firstly chooses a random obstacle and then continues to do so until it picks a random obstacle that can be spawned at the current level
+        do
+        {
+            // Select a random obstacle
+            obstacle = obstacles[Random.Range(0,2)];
+
+        } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
 
         // if(obstacle.tag == "Barrier")
         // {

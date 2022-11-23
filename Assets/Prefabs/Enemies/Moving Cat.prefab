@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 3697139573103888377}
   - component: {fileID: 1935653678665101258}
   m_Layer: 0
-  m_Name: Cat
+  m_Name: Moving Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,7 +398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
-  levelToSpawn: 1
 --- !u!1 &3724272632840039971
 GameObject:
   m_ObjectHideFlags: 0

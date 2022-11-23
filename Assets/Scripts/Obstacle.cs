@@ -6,7 +6,10 @@ public class Obstacle : MonoBehaviour
 {
 
     [SerializeField] private float damage = 10;
+    [SerializeField] public int levelToSpawn;
 
+    // Specifies an obstacle level in which the object can spawn at
+    public int ObstacleLevel { get {return levelToSpawn;} }
 
     // Method: Called when another collider comes into contact with the current gameObject
     private void OnTriggerEnter(Collider other) 
