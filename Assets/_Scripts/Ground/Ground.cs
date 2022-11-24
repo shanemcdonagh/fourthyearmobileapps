@@ -9,6 +9,7 @@ public class Ground : MonoBehaviour
     GroundSpawner gs;
     public List<GameObject> obstacles;
     public List<GameObject> powers;
+    public int[] powerRarity;
     private bool firstPlatform;
 
     // Start is called before the first frame update
@@ -17,9 +18,10 @@ public class Ground : MonoBehaviour
         // Retrieve game object containing GroundSpawner script
         gs = GameObject.FindObjectOfType<GroundSpawner>();
 
-        SpawnEnemyObstacle();
         SpawnPowers();
+        SpawnEnemyObstacle();  
     }
+
 
     // Method: Triggered when an object or collider exits the collider on the current game object
     private void OnTriggerExit(Collider other) 
@@ -60,18 +62,26 @@ public class Ground : MonoBehaviour
         // Select a random point to spawn the obstacle
         int randomSpawnPoint = Random.Range(2,5);
 
-        Transform spawn = transform.GetChild(randomSpawnPoint).transform;
-
         // Select the first obstacle in the array initially
         GameObject obstacle = obstacles[0];
 
         // Firstly chooses a random obstacle and then continues to do so until it picks a random obstacle that can be spawned at the current level
-        do
-        {
+        // do
+        // {
             // Select a random obstacle
             obstacle = obstacles[Random.Range(0,3)];
+            //Debug.Log("Current Level: " + GameObject.FindObjectOfType<GameBehaviour>().GetLevel());
 
-        } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
+        // } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
+
+
+        // if(obstacle.name == "Long Stone Wall")
+        // {
+        //     // Spawn obstacle in the middle of the ground
+        //     randomSpawnPoint = 3;
+        // }
+
+        Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Instantiate the obstacle at the random spawn point and make it a parent of ground tile
         // This is important as it will destroy the obstacles as the ground gets destroyed
@@ -100,7 +110,9 @@ public class Ground : MonoBehaviour
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Select a random power from the list
-        GameObject power = powers[Random.Range(0,3)];
+        GameObject power = powers[Random.Range(0,2)];
+
+        // Vector3 spawn = new Vector3(spawn.position.x,power.transform.position.y,spawn.position.z);
 
         // Instantiate the power at the random spawn point and make it a parent of ground tile
         // This is important as it will destroy and powers left over if the player doesn't pick them up

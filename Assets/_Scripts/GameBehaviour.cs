@@ -47,11 +47,13 @@ public class GameBehaviour : MonoBehaviour
         {
             // Change to level 2
             currLevel = 2;
+            Debug.Log("Level 2");
         }
         else if(highScore >= 500)
         {
             // Change to level 3
             currLevel = 3;
+            Debug.Log("Level 3");
         }
     }
 }

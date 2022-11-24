@@ -11,13 +11,10 @@ public class Powers : MonoBehaviour
     // Activates when the something collides with the cheese
     private void OnTriggerEnter(Collider other) 
     {
-        // If the powerup is spawned on an obstacle
-        if (other.gameObject.tag != "Player") 
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else if(other.gameObject.tag == "Player")
+
+        // Prevent stacking objects
+
+        if(other.gameObject.tag == "Player")
         {
             // Update the player score
             GameObject.FindObjectOfType<GameBehaviour>().updateHighScore(points);

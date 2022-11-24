@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7122256533539397284, guid: 4f9f66459cdaf694297f57e6e5f1d2ce, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7122256533539397285, guid: 4f9f66459cdaf694297f57e6e5f1d2ce, type: 3}
       propertyPath: m_Enabled
       value: 1
