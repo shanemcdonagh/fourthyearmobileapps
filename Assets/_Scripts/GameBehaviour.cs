@@ -12,7 +12,7 @@ public class GameBehaviour : MonoBehaviour
     //public static int GetLevel{get{return currLevel;}}
     public int GetLevel() { return currLevel; }
 
-    // Important for player speed
+    // Important for player speed and the UI
     public float Highscore { get {return highScore;} }
 
     // Start is called before the first frame update
@@ -34,6 +34,8 @@ public class GameBehaviour : MonoBehaviour
     {   
         highScore += value;
         Debug.Log("Highscore: " + highScore);
+
+        // Update the UI
 
         // Check if the player has a high enough score to reach the next level
         checkScore();
