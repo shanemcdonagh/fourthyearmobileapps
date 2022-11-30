@@ -7,6 +7,8 @@ public class GameBehaviour : MonoBehaviour
     private float highScore;
 
     [SerializeField] private int currLevel;
+    private GameObject parentCanvas;
+    private GameObject childCanvas;
 
     // Used to determine a myriad of factors - Player speed, obstacle spawns etc. (important to be viewable in these classes)
     //public static int GetLevel{get{return currLevel;}}
@@ -20,7 +22,7 @@ public class GameBehaviour : MonoBehaviour
     {
         // Set the initial values necessary
         highScore = 0;
-        currLevel = 1;
+        currLevel = 1; 
     }
 
     // Update is called once per frame

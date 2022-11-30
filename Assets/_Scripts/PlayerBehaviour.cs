@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 5.0f;
+    [SerializeField] float jumpAmt;
+    [SerializeField] LayerMask ground;
     private Rigidbody rb;
 
     // Status can be accessed by other classes
@@ -64,5 +66,24 @@ public class PlayerBehaviour : MonoBehaviour
             // Move the player position to the right
             this.transform.Translate(-0.5f, 0f, 0f);
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jump();
+        }
+    }
+
+    private void jump()
+    {
+        // Firstly, check if the player is currently on the ground
+        // Reference: https://youtu.be/x-EtYggJdP0
+
+        // Retrieve the players center of origin
+        float playerHeight = GetComponent<Collider>().bounds.size.y;
+
+        // Cast a ray downwards to players feet to see if it's touching the floor
+        bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, ground);
+
+        rb.AddForce(Vector3.up * jumpAmt);
     }
 }
