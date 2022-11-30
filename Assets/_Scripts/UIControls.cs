@@ -15,7 +15,7 @@ public class UIControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SingletonSetup();
+        //SingletonSetup();
     }
 
     // Update is called once per frame
@@ -47,10 +47,5 @@ public class UIControls : MonoBehaviour
             score = GameObject.FindObjectOfType<GameBehaviour>().Highscore;
             scoreText.text = score.ToString();
         }
-    }
-
-    public void OnPlayerDeath()
-    {
-
     }
 }

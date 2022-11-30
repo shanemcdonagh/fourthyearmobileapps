@@ -45,4 +45,29 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         gamePaused = true;
     }
+
+    // Method: When quit menu is pressed, this method is invoked
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+
+        // Reload the menu scene
+        SceneManager.LoadSceneAsync(0);
+    }
+
+    // Method: Used for resuming with a button click
+    public void ResumeGame()
+    {
+        // Invoke private method to resume the game
+        resume();
+    }
+
+    // Method: When restart menu is pressed, this method is invoked
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+
+        // Reload the game scene
+        SceneManager.LoadSceneAsync(1);
+    }
 }
