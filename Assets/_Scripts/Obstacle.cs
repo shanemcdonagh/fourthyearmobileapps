@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    [SerializeField] private float damage = 10;
+    [SerializeField] private int damage = 10;
     [SerializeField] public int levelToSpawn;
 
     // Specifies an obstacle level in which the object can spawn at

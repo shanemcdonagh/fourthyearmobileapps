@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour
 {
-    private float highScore;
+    private int highScore;
 
     [SerializeField] private int currLevel;
     private GameObject parentCanvas;
@@ -32,7 +32,7 @@ public class GameBehaviour : MonoBehaviour
     }
 
     // Invoked when the player collects the cheese power-up
-    public void updateHighScore(float value)
+    public void updateHighScore(int value)
     {   
         highScore += value;
         Debug.Log("Highscore: " + highScore);

@@ -18,7 +18,7 @@ public class HealthUI : MonoBehaviour
         healthFill.color = gradient.Evaluate(1f);
     }
 
-    public void UpdateHealthBar(float health)
+    public void UpdateHealthBar(int health)
     {
         // Update the health bar and the color gradient associated with the current fill value
         healthSlider.value = health;

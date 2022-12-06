@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100;
-    private float currentHealth;
+    [SerializeField] private int maxHealth = 100;
+    private int currentHealth;
     //public float GetCurrentHealth(){return currentHealth};
 
 
@@ -23,9 +23,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Method: Called when the obstacle comes into contact with the player
-    public void TakePlayerDamage(float damage)
+    public void TakePlayerDamage(int damage)
     {
         currentHealth -= damage;
+        GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
         Debug.Log(currentHealth);
 
         if(currentHealth <= 0)
@@ -35,11 +36,12 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Method: Called when a heart comes into contact with the player (Heart.cs)
-    public void IncreasePlayerHealth(float health)
+    public void IncreasePlayerHealth(int health)
     {
         if(currentHealth <=100 && currentHealth > 0)
         {
             currentHealth+=health;
+            GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Powers : MonoBehaviour
 {
 
-    [SerializeField] private float points = 10;
+    [SerializeField] private int points = 10;
     [SerializeField] private float turnSpeed = 90f;
 
     // Activates when the something collides with the cheese
