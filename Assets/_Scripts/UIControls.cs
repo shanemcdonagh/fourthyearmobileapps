@@ -60,7 +60,9 @@ public class UIControls : MonoBehaviour
     // Reference: https://youtu.be/ulxXGht5D2U
     IEnumerator startCountdown()
     {
+        GameObject player = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         Time.timeScale = 0f;
+        player.GetComponent<PlayerBehaviour>().enabled = false;
 
         while(timer > 0)
         {
@@ -79,6 +81,8 @@ public class UIControls : MonoBehaviour
         // Toggle the text off 
         timerText.gameObject.SetActive(false);
         Time.timeScale = 1f;
+        player.GetComponent<PlayerBehaviour>().enabled = true;
+
 
         // Wait a second
        // yield return new WaitForSeconds(1f);
