@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3289211012602727790}
   - component: {fileID: -4991957010765128704}
   - component: {fileID: 7912372691716877143}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3289211013024493319}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: NextGroundItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 107290331919184359}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GroundSpawnRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4922494030011133443}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GroundSpawnCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5879486513435382773}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GroundSpawnLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6741364183126402913, guid: 9191cbdbc6e55fc49b5343d914f0602b, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6741364183126402913, guid: 9191cbdbc6e55fc49b5343d914f0602b, type: 3}
       propertyPath: m_IsActive
@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_IsActive

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6354224127872147017, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_Name
       value: Long Stone Wall

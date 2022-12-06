@@ -65,6 +65,11 @@ public class Ground : MonoBehaviour
         // Select the first obstacle in the array initially
         GameObject obstacle = obstacles[0];
 
+        // do
+        // {
+        //     obstacle = obstacles[Random.Range(0,3)];
+        // } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > GameObject.FindObjectOfType<GameBehaviour>().GetLevel());
+
         // Firstly chooses a random obstacle and then continues to do so until it picks a random obstacle that can be spawned at the current level
         // do
         // {

@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 7.0f;
     [SerializeField] float jumpAmt;
-    [SerializeField] LayerMask ground;
+    [SerializeField] LayerMask plane;
     private Rigidbody rb;
 
     // Status can be accessed by other classes
@@ -82,7 +82,7 @@ public class PlayerBehaviour : MonoBehaviour
         float playerHeight = GetComponent<Collider>().bounds.size.y;
 
         // Cast a ray downwards to players feet to see if it's touching the floor
-        bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, ground);
+        bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, plane);
 
         rb.AddForce(Vector3.up * jumpAmt);
     }
