@@ -27,6 +27,5 @@ public class Powers : MonoBehaviour
     {
         // Rotate the gameObject
         transform.Rotate(0, turnSpeed * Time.deltaTime, 0);
-
     }
 }

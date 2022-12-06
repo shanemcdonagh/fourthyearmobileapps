@@ -28,7 +28,6 @@ public class GameBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Will be used to update the UI
     }
 
     // Invoked when the player collects the cheese power-up
@@ -36,8 +35,6 @@ public class GameBehaviour : MonoBehaviour
     {   
         highScore += value;
         Debug.Log("Highscore: " + highScore);
-
-        // Update the UI
 
         // Check if the player has a high enough score to reach the next level
         checkScore();

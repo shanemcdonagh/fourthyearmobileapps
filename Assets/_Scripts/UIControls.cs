@@ -10,8 +10,7 @@ public class UIControls : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int timer;
     [SerializeField] private TextMeshProUGUI timerText;
-
-
+    [SerializeField] private GameObject gameOverMenu;
 
     // Variables
     private float score = 0;
@@ -19,10 +18,10 @@ public class UIControls : MonoBehaviour
     //public int timer;
     //public TextMeshProUGUI timerText;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        gameOverMenu.SetActive(false);
         StartCoroutine(startCountdown());
     }
 
@@ -52,8 +51,18 @@ public class UIControls : MonoBehaviour
     {
         if(gameObject != null)
         {
-            score = GameObject.FindObjectOfType<GameBehaviour>().Highscore;
-            scoreText.text = score.ToString();
+            
+
+            if(!PlayerBehaviour.isPlayerDead)
+            {
+                score = GameObject.FindObjectOfType<GameBehaviour>().Highscore;
+                scoreText.text = score.ToString();
+            }
+            else
+            {
+                Time.timeScale = 0;
+                gameOverMenu.SetActive(true);
+            }  
         }
     }
 
@@ -61,18 +70,21 @@ public class UIControls : MonoBehaviour
     IEnumerator startCountdown()
     {
         GameObject player = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+
+        // Lets other gameObjects scripts work first before stopping time (allows game over menu to be set back to false)
+        yield return new WaitForSecondsRealtime(0.01f);
+
         Time.timeScale = 0f;
         player.GetComponent<PlayerBehaviour>().enabled = false;
+        GameObject.FindObjectOfType<PauseMenu>().enabled = false;
 
         while(timer > 0)
         {
-            
             // Update the timer text
             timerText.text = timer.ToString();
 
             // Wait a second
             yield return new WaitForSecondsRealtime(1f);
-            Debug.Log("bruh");
 
             // Decrease the time
             timer--;
@@ -82,11 +94,10 @@ public class UIControls : MonoBehaviour
         timerText.gameObject.SetActive(false);
         Time.timeScale = 1f;
         player.GetComponent<PlayerBehaviour>().enabled = true;
+        GameObject.FindObjectOfType<PauseMenu>().enabled = true;
 
 
         // Wait a second
-       // yield return new WaitForSeconds(1f);
-
-        
+       // yield return new WaitForSeconds(1f);        
     }
 }

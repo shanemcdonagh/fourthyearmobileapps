@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [SerializeField] float playerSpeed = 5.0f;
+    [SerializeField] float playerSpeed = 7.0f;
     [SerializeField] float jumpAmt;
     [SerializeField] LayerMask ground;
     private Rigidbody rb;
@@ -85,5 +85,21 @@ public class PlayerBehaviour : MonoBehaviour
         bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, ground);
 
         rb.AddForce(Vector3.up * jumpAmt);
+    }
+
+    private void increaseSpeed()
+    {
+        int currentLevel = GameObject.FindObjectOfType<GameBehaviour>().GetLevel();
+
+        if(currentLevel == 2)
+        {
+            // Update player speed to 10
+            playerSpeed = 10.0f;
+        }
+        else if(currentLevel == 3)
+        {
+            // Update player speed to 12
+            playerSpeed = 12.0f;
+        }
     }
 }
