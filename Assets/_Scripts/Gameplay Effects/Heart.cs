@@ -13,6 +13,7 @@ public class Heart : MonoBehaviour
         // If the powerup is spawned on an obstacle
         if (other.gameObject.GetComponent<Obstacle>() != null) 
         {
+            SoundManager.SoundManagerInstance.PlayClip("Health Up");
             Destroy(gameObject);
             return;
         }

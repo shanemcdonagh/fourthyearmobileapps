@@ -17,6 +17,7 @@ public class Powers : MonoBehaviour
             // Update the player score
             GameObject.FindObjectOfType<GameBehaviour>().updateHighScore(points);
             
+            SoundManager.SoundManagerInstance.PlayClip("Power Up");
             Destroy(gameObject);
         }
     }

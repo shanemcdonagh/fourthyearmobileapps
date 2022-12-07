@@ -85,6 +85,7 @@ public class PlayerBehaviour : MonoBehaviour
         bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, plane);
 
         rb.AddForce(Vector3.up * jumpAmt);
+        SoundManager.SoundManagerInstance.PlayClip("Jump");
     }
 
     private void increaseSpeed()

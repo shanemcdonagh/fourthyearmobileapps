@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
+        SoundManager.SoundManagerInstance.PlayClip("Damage");
         Debug.Log(currentHealth);
 
         if(currentHealth <= 0)
