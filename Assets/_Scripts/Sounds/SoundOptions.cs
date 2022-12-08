@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Reference: https://youtu.be/LfU5xotjbPw
 public class SoundOptions: MonoBehaviour
 {
     // Used to determine the volume set by the pause menu

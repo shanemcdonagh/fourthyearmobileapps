@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+// Reference: https://youtu.be/LfU5xotjbPw
 [System.Serializable]
 public class Sound
 {

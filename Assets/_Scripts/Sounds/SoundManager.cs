@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 
-// Follows same structure as SoundManager I used for my last mobile apps project
+// Reference: https://youtu.be/LfU5xotjbPw
 public class SoundManager : MonoBehaviour
 {
     // Allows for SoundManager to be called from other scripts to play a sound
