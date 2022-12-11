@@ -115,7 +115,7 @@ public class Ground : MonoBehaviour
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Select a random power from the list
-        GameObject power = powers[Random.Range(0,2)];
+        GameObject power = powers[Random.Range(0,3)];
 
         // Vector3 spawn = new Vector3(spawn.position.x,power.transform.position.y,spawn.position.z);
 

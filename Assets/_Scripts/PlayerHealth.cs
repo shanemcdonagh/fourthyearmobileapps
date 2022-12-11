@@ -25,11 +25,14 @@ public class PlayerHealth : MonoBehaviour
     // Method: Called when the obstacle comes into contact with the player
     public void TakePlayerDamage(int damage)
     {
-        currentHealth -= damage;
-        GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
-        SoundManager.SoundManagerInstance.PlayClip("Damage");
-        Debug.Log(currentHealth);
-
+        if(!Star.isInvincible)
+        {
+            currentHealth -= damage;
+            GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
+            SoundManager.SoundManagerInstance.PlayClip("Damage");
+            Debug.Log(currentHealth);
+        }
+       
         if(currentHealth <= 0)
         {
             PlayerBehaviour.isPlayerDead = true;
