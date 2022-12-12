@@ -4,30 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-public class PlayerBehaviour : MonoBehaviour
+// Separate script for Player Two
+public class PlayerBehaviour1 : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 7.0f;
     [SerializeField] float jumpAmt;
-    [SerializeField] LayerMask plane;
     private Rigidbody rb;
 
     // Status can be accessed by other classes
     public static bool isPlayerDead = false;
 
     public static GameObject Player;
-    private int distanceTravelled = 0;
-
-    [SerializeField] private TextMeshProUGUI distanceText;
-    [SerializeField] private TextMeshProUGUI gameOverDistanceText;
-
     
     void Awake()
     {
         // Initialize rigidbody type and GameObject from current GO this script is attached to (player)
         Player = this.gameObject;
         rb = gameObject.GetComponent<Rigidbody>();
-        InvokeRepeating("getDistance",0, 1 / playerSpeed);
     }
 
     // Start is called before the first frame update
@@ -65,20 +58,20 @@ public class PlayerBehaviour : MonoBehaviour
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             // Move the player position to the right
             this.transform.Translate(0.5f, 0f, 0f);
         }
 
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             // Move the player position to the right
             this.transform.Translate(-0.5f, 0f, 0f);
         }
 
-        if(Input.GetKeyDown(KeyCode.W))
-        {
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {    
             jump();   
         }
     }
@@ -86,28 +79,11 @@ public class PlayerBehaviour : MonoBehaviour
     private void jump()
     {
         // Firstly, check if the player is currently on the ground
-        // Reference: https://youtu.be/x-EtYggJdP0
-
-        // Retrieve the players center of origin
-        float playerHeight = GetComponent<Collider>().bounds.size.y;
-
-        // Cast a ray downwards to players feet to see if it's touching the floor
-        //bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, plane);
-
         if(Mathf.Floor(this.transform.position.y) == 1)
         {
             rb.AddForce(Vector3.up * jumpAmt);
             SoundManager.SoundManagerInstance.PlayClip("Jump");
         }
-    }
-
-    // Reference: https://youtu.be/53ATbkNrHjw
-    private void getDistance()
-    {
-        distanceTravelled = distanceTravelled + 1;
-
-        distanceText.text = distanceTravelled.ToString() + "m";
-        gameOverDistanceText.text = distanceTravelled.ToString() + "m";
     }
 
     private void increaseSpeed()

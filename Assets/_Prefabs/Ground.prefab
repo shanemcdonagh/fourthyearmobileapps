@@ -168,6 +168,8 @@ MonoBehaviour:
   - {fileID: 8594917608888992747, guid: 5eb38a05e7c53a643989047aeaadd809, type: 3}
   - {fileID: 3723479519207002943, guid: 179cecb628ae582448b5f9fd04efe948, type: 3}
   - {fileID: 5152190750072113476, guid: 19791fb01f2d4664c9bcacf201de6ba1, type: 3}
+  - {fileID: 6741364183126402913, guid: 9191cbdbc6e55fc49b5343d914f0602b, type: 3}
+  - {fileID: 3723479519207002943, guid: c3464be34d2cac24189c302ce0afbda9, type: 3}
   powers:
   - {fileID: 797981593045574737, guid: 1fdf609cbf7aca040aa8132821084ef7, type: 3}
   - {fileID: 1491648908285635995, guid: cc1ed81928e5da340938d0b662a38892, type: 3}

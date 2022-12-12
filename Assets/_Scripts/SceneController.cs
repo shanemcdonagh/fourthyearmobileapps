@@ -27,6 +27,7 @@ public class SceneController : MonoBehaviour
 
     public void BeginCoOp()
     {
-
+        // Start the co-op mode
+        SceneManager.LoadSceneAsync(2);
     }
 }

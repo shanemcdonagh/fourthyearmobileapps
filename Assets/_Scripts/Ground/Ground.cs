@@ -74,6 +74,7 @@ public class Ground : MonoBehaviour
         // Select the first obstacle in the array initially
         GameObject obstacle = obstacles[0];
 
+        // Attempt at spawning obstacles based on the current level
         // do
         // {
         //     obstacle = obstacles[Random.Range(0,3)];
@@ -83,18 +84,18 @@ public class Ground : MonoBehaviour
         // do
         // {
             // Select a random obstacle
-            int obstacleNumber = Random.Range(0,3);
+            int obstacleNumber = Random.Range(0,5);
             obstacle = obstacles[obstacleNumber];
             //Debug.Log("Current Level: " + GameObject.FindObjectOfType<GameBehaviour>().GetLevel());
 
         // } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
 
 
-        // if(obstacle.name == "Long Stone Wall")
-        // {
-        //     // Spawn obstacle in the middle of the ground
-        //     randomSpawnPoint = 3;
-        // }
+        if(obstacle.name.Contains("Long Stone Wall"))
+        {
+            // Spawn obstacle in the middle of the ground
+            randomSpawnPoint = 3;
+        }
 
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 

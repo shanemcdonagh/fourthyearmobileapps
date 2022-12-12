@@ -12,7 +12,7 @@ public class Powers : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         // Prevent stacking objects
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag.Contains("Player"))
         {
             // Update the player score
             GameObject.FindObjectOfType<GameBehaviour>().updateHighScore(points);
