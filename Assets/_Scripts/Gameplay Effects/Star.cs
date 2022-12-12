@@ -8,6 +8,13 @@ public class Star : MonoBehaviour
 {
     public static bool isInvincible = false;
     [SerializeField] private float invincibilityTimer = 3.0f;
+    [SerializeField] private float turnSpeed = 90f;
+
+    private void Update() 
+    {
+        // Rotate the gameObject
+        transform.Rotate(0,0, turnSpeed * Time.deltaTime);
+    }
 
     // Activates when the something collides with the cheese
     private void OnTriggerEnter(Collider other) 
@@ -19,7 +26,12 @@ public class Star : MonoBehaviour
             isInvincible = true;
             SoundManager.SoundManagerInstance.PlayClip("Power Up");
            
-            StartCoroutine(SetVincibility());  
+            StartCoroutine(SetVincibility());
+        }
+        else if(other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Power")
+        {
+            Debug.Log("Destroyed");
+            Destroy(gameObject);
         }
     }
 

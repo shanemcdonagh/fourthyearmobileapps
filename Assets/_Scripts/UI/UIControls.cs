@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class UIControls : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private int timer;
     [SerializeField] private TextMeshProUGUI timerText;
+    
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
 
     // Variables
     private float score = 0;
@@ -52,15 +54,19 @@ public class UIControls : MonoBehaviour
         if(gameObject != null)
         {
             
-
             if(!PlayerBehaviour.isPlayerDead)
             {
                 score = GameObject.FindObjectOfType<GameBehaviour>().Highscore;
                 scoreText.text = score.ToString();
+                gameOverScoreText.text = score.ToString();
             }
             else
             {
+                SoundManager.SoundManagerInstance.PlayClip("GO");
                 Time.timeScale = 0;
+
+                // Stop game music, play game over music and activate game over menu
+                SoundManager.SoundManagerInstance.StopClip("Menu Music");
                 gameOverMenu.SetActive(true);
             }  
         }
@@ -77,6 +83,13 @@ public class UIControls : MonoBehaviour
         Time.timeScale = 0f;
         player.GetComponent<PlayerBehaviour>().enabled = false;
         GameObject.FindObjectOfType<PauseMenu>().enabled = false;
+        
+        var cats = GameObject.FindObjectsOfType<CatController>();
+
+        foreach (var cat in cats)
+        {
+            cat.GetComponent<CatController>().enabled = false;
+        }
 
         while(timer > 0)
         {
@@ -96,7 +109,11 @@ public class UIControls : MonoBehaviour
         player.GetComponent<PlayerBehaviour>().enabled = true;
         GameObject.FindObjectOfType<PauseMenu>().enabled = true;
 
-
+        foreach (var cat in cats)
+        {
+            cat.GetComponent<CatController>().enabled = true;
+        }
+    
         // Wait a second
        // yield return new WaitForSeconds(1f);        
     }

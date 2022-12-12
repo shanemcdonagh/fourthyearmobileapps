@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3911406900280030130}
   m_Layer: 0
   m_Name: Chest
-  m_TagString: Chest
+  m_TagString: Power
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.42, y: 0.23, z: 0.68}
-  m_Center: {x: 0, y: 1.04, z: 0}
+  m_Size: {x: 0.7959531, y: 0.8644131, z: 0.6799999}
+  m_Center: {x: 0.1879772, y: 1.1, z: 0}
 --- !u!114 &3820060891491835380
 MonoBehaviour:
   m_ObjectHideFlags: 0

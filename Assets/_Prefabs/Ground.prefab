@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3289211011878289757}
   - component: {fileID: 3289211011878289758}
   - component: {fileID: 3289211011878289759}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,14 +166,16 @@ MonoBehaviour:
   obstacles:
   - {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
   - {fileID: 8594917608888992747, guid: 5eb38a05e7c53a643989047aeaadd809, type: 3}
-  - {fileID: 3723479519207002943, guid: c3464be34d2cac24189c302ce0afbda9, type: 3}
+  - {fileID: 3723479519207002943, guid: 179cecb628ae582448b5f9fd04efe948, type: 3}
   - {fileID: 5152190750072113476, guid: 19791fb01f2d4664c9bcacf201de6ba1, type: 3}
   powers:
-  - {fileID: 3335432578264406451, guid: ffd90fb7ac1280d4a9bacc9cdbfd6916, type: 3}
+  - {fileID: 797981593045574737, guid: 1fdf609cbf7aca040aa8132821084ef7, type: 3}
   - {fileID: 1491648908285635995, guid: cc1ed81928e5da340938d0b662a38892, type: 3}
   - {fileID: 1959476470532315680, guid: 9f53e8f5326358445b986f98b6768134, type: 3}
   - {fileID: 248082408481150762, guid: 21e62c45920294a4299ed795d5fe23d7, type: 3}
-  powerRarity: 320000001e00000014000000
+  - {fileID: 6728263549289335821, guid: 525173b555f54184c99f5f33a8bd5756, type: 3}
+  - {fileID: 1722312958631376355, guid: 0f69abba9fc61ef4cad1a64b08287603, type: 3}
+  powerRarity: 4b0000000500000005000000050000000500000005000000
 --- !u!1 &3289211013024493320
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +319,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6741364183126402913, guid: 9191cbdbc6e55fc49b5343d914f0602b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6741364183126402914, guid: 9191cbdbc6e55fc49b5343d914f0602b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -399,6 +405,10 @@ PrefabInstance:
     - target: {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6354224127872147030, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_RootOrder

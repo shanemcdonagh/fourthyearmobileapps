@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038811480858654995}
   - component: {fileID: 1038811480858654997}
-  - component: {fileID: 1038811480858654996}
+  - component: {fileID: 1477249029}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -56,13 +56,55 @@ MonoBehaviour:
   - audioType: 0
     audioSource: {fileID: 0}
     volume: 0.5
-    soundName: Button Click
-    audioClip: {fileID: 8300000, guid: 7a550a56cce133644a80162578ad3f26, type: 3}
+    soundName: Power Up
+    audioClip: {fileID: 8300000, guid: cbf09a15044e22242af8402e61da56e5, type: 3}
+    isLooping: 0
+    playOnAwake: 0
+  - audioType: 0
+    audioSource: {fileID: 0}
+    volume: 0.5
+    soundName: Health Up
+    audioClip: {fileID: 8300000, guid: f2759eb6943ef9040bfcd6c78ce5e37a, type: 3}
+    isLooping: 0
+    playOnAwake: 0
+  - audioType: 0
+    audioSource: {fileID: 0}
+    volume: 0.5
+    soundName: Star
+    audioClip: {fileID: 8300000, guid: cdd06413ded285e40899f53e9a3a951f, type: 3}
+    isLooping: 0
+    playOnAwake: 0
+  - audioType: 0
+    audioSource: {fileID: 0}
+    volume: 0.5
+    soundName: Health
+    audioClip: {fileID: 8300000, guid: f2759eb6943ef9040bfcd6c78ce5e37a, type: 3}
+    isLooping: 0
+    playOnAwake: 0
+  - audioType: 0
+    audioSource: {fileID: 0}
+    volume: 0.5
+    soundName: Jump
+    audioClip: {fileID: 8300000, guid: 6ce8c2af958e46c41b7b537a885b3336, type: 3}
+    isLooping: 0
+    playOnAwake: 0
+  - audioType: 0
+    audioSource: {fileID: 0}
+    volume: 0.5
+    soundName: Damage
+    audioClip: {fileID: 8300000, guid: 3ee81709d2883f24687716231da0dd67, type: 3}
+    isLooping: 0
+    playOnAwake: 0
+  - audioType: 0
+    audioSource: {fileID: 0}
+    volume: 1
+    soundName: GO
+    audioClip: {fileID: 8300000, guid: 537a2de8f5169474e831347006c59b24, type: 3}
     isLooping: 0
     playOnAwake: 0
   soundFX: {fileID: -3458002147200809557, guid: 5df5642547850a443985b5b325d0d1c9, type: 2}
   music: {fileID: -1097856808145436400, guid: 5df5642547850a443985b5b325d0d1c9, type: 2}
---- !u!114 &1038811480858654996
+--- !u!114 &1477249029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

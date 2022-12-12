@@ -20,6 +20,11 @@ public class Powers : MonoBehaviour
             SoundManager.SoundManagerInstance.PlayClip("Power Up");
             Destroy(gameObject);
         }
+        else if(other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Power")
+        {
+            Debug.Log("Destroyed");
+            Destroy(gameObject);
+        }
     }
 
     private void Update() 

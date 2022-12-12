@@ -13,17 +13,16 @@ public class Heart : MonoBehaviour
         // If the powerup is spawned on an obstacle
         if (other.gameObject.GetComponent<Obstacle>() != null) 
         {
-            SoundManager.SoundManagerInstance.PlayClip("Health Up");
             Destroy(gameObject);
             return;
         }
         
         // Check if the gameobject in question is the player
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && GameObject.FindObjectOfType<PlayerHealth>().GetCurrentHealth() < 100)
         {
             // Update the player score
+            SoundManager.SoundManagerInstance.PlayClip("Health");
             GameObject.FindObjectOfType<PlayerHealth>().IncreasePlayerHealth(health);
-            
             Destroy(gameObject);
         }
     }

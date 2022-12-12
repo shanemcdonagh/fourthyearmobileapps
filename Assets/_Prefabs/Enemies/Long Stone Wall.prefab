@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354224127872147018, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_TagString
-      value: Long Wall
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 6354224127872147030, guid: 54182678c4207ae4fba4588eb8cee65f, type: 3}
       propertyPath: m_RootOrder

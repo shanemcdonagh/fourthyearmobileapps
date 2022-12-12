@@ -18,7 +18,11 @@ public class Ground : MonoBehaviour
         // Retrieve game object containing GroundSpawner script
         gs = GameObject.FindObjectOfType<GroundSpawner>();
 
-        SpawnPowers();
+        for(int i = 0; i < 15; i++)
+        {
+            SpawnPowers();
+        }
+        
         SpawnEnemyObstacle();  
     }
 
@@ -26,6 +30,7 @@ public class Ground : MonoBehaviour
     // Method: Triggered when an object or collider exits the collider on the current game object
     private void OnTriggerExit(Collider other) 
     {
+
         // First, check if the player still is alive (has health remaining)
         if(PlayerBehaviour.isPlayerDead)
         {
@@ -33,11 +38,15 @@ public class Ground : MonoBehaviour
             return;
         }
 
-        // Spawn a new ground area for the player to traverse on
-        gs.spawnTile();
+        // Prevent stacking objects
+        if(other.gameObject.tag == "Player")
+        {
+            // Spawn a new ground area for the player to traverse on
+            gs.spawnTile();
 
-        // Invoke method which deactivates gameobject after 3 seconds
-        Invoke("SetToFalse",3.0f);
+            // Invoke method which deactivates gameobject after 3 seconds
+            Invoke("SetToFalse",3.0f);
+        }
     }
 
     private void SetToFalse()
@@ -74,7 +83,8 @@ public class Ground : MonoBehaviour
         // do
         // {
             // Select a random obstacle
-            obstacle = obstacles[Random.Range(0,3)];
+            int obstacleNumber = Random.Range(0,3);
+            obstacle = obstacles[obstacleNumber];
             //Debug.Log("Current Level: " + GameObject.FindObjectOfType<GameBehaviour>().GetLevel());
 
         // } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
@@ -115,12 +125,18 @@ public class Ground : MonoBehaviour
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Select a random power from the list
-        GameObject power = powers[Random.Range(0,3)];
+        int powerNumber = Random.Range(0,5);
+        GameObject power = powers[powerNumber];
+
+       // while(Random.Range(0,100) <= powerRarity[powerNumber])
 
         // Vector3 spawn = new Vector3(spawn.position.x,power.transform.position.y,spawn.position.z);
 
         // Instantiate the power at the random spawn point and make it a parent of ground tile
         // This is important as it will destroy and powers left over if the player doesn't pick them up
+        // int rarity = Random.Range(0,100);
+        // Debug.Log("Rarity: " + rarity + "Item Rarity: " + powerRarity[powerNumber]);
+
         Instantiate(power, new Vector3(spawn.position.x,power.transform.position.y,spawn.position.z), power.transform.rotation, transform);
     }
 }

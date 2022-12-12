@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -13,12 +16,18 @@ public class PlayerBehaviour : MonoBehaviour
     public static bool isPlayerDead = false;
 
     public static GameObject Player;
+    private int distanceTravelled = 0;
+
+    [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] private TextMeshProUGUI gameOverDistanceText;
+
     
     void Awake()
     {
         // Initialize rigidbody type and GameObject from current GO this script is attached to (player)
         Player = this.gameObject;
         rb = gameObject.GetComponent<Rigidbody>();
+        InvokeRepeating("getDistance",0, 1 / playerSpeed);
     }
 
     // Start is called before the first frame update
@@ -43,6 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         // Process player movement
         ProcessPlayerMovement();
+        increaseSpeed();
     }
 
     // Method: When invoked, proceeds to handle players movement
@@ -69,7 +79,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            jump();
+           
+            jump();   
         }
     }
 
@@ -82,10 +93,21 @@ public class PlayerBehaviour : MonoBehaviour
         float playerHeight = GetComponent<Collider>().bounds.size.y;
 
         // Cast a ray downwards to players feet to see if it's touching the floor
-        bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, plane);
+        //bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, plane);
 
-        rb.AddForce(Vector3.up * jumpAmt);
-        SoundManager.SoundManagerInstance.PlayClip("Jump");
+        if(Mathf.Floor(this.transform.position.y) == 1)
+        {
+            rb.AddForce(Vector3.up * jumpAmt);
+            SoundManager.SoundManagerInstance.PlayClip("Jump");
+        }
+    }
+
+    private void getDistance()
+    {
+        distanceTravelled = distanceTravelled + 1;
+
+        distanceText.text = distanceTravelled.ToString() + "m";
+        gameOverDistanceText.text = distanceTravelled.ToString() + "m";
     }
 
     private void increaseSpeed()
@@ -95,12 +117,12 @@ public class PlayerBehaviour : MonoBehaviour
         if(currentLevel == 2)
         {
             // Update player speed to 10
-            playerSpeed = 10.0f;
+            playerSpeed = 15.0f;
         }
         else if(currentLevel == 3)
         {
             // Update player speed to 12
-            playerSpeed = 12.0f;
+            playerSpeed = 20.0f;
         }
     }
 }

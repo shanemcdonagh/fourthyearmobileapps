@@ -12,6 +12,11 @@ TagManager:
   - Star
   - Heart
   - Long Wall
+  - Wall
+  - Obstacle
+  - Undefined
+  - Power
+  - Floor
   layers:
   - Default
   - TransparentFX

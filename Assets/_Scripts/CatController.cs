@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class CatController : MonoBehaviour
 {
-    [SerializeField] private float speed = 3.0f;
-    private int direction = -1;
+    [SerializeField] private float speed = 0.3f;
+    private int direction = 1;
     private Vector3 initialScale;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     
-    // Method: Invoked on object instantiation (before Start())
-    private void Awake()
-    {
-        initialScale = transform.localScale;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -27,27 +21,23 @@ public class CatController : MonoBehaviour
         moveCat();
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider collision) 
     {
         // If the cat collides with another other gameObject with a collider
-        if (other.gameObject.GetComponent<PlayerBehaviour>() == null) 
+        if (collision.gameObject.tag != "Player") 
         {
             // Change the the direction the cat should be moving in
             direction = -direction;
-            transform.localScale = new Vector2(-1 * transform.localScale.x, transform.localScale.y);
+            // Vector3 move = new Vector3(-1 * direction,0,0) * speed * Time.fixedDeltaTime;
+            // rb.MovePosition(rb.position + move);
         }
     }
 
     // Method: Moves cat along axis
     private void moveCat()
     {
-        // Retrieve the current position of the cat
-        Vector2 position = rb.position;
-        
-        // Increase the cat on the x position based on speed and direction
-        position.x = position.x + Time.deltaTime * speed * direction;
-        
-        // Move the rigidBody to the new position
-        rb.MovePosition(position);
+        Vector3 move = new Vector3(-1 * direction, 0, 0)* speed * Time.fixedDeltaTime;
+        transform.rotation = Quaternion.LookRotation(move);
+        rb.MovePosition(rb.position + move);
     }
 }
