@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private Material material;
+    //[SerializeField] private Material material;
     private int currentHealth;
     private Color originalColor;
-    private float damageTime = 0.15f;
+    //private float damageTime = 0.15f;
 
     // Prevents hearts from being consumed if player is full
     public float GetCurrentHealth(){return currentHealth;}
@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     {
         // Set the current health to max health
         currentHealth = maxHealth;
-        originalColor = material.color;
+        //originalColor = material.color;
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= damage;
             GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
             SoundManager.SoundManagerInstance.PlayClip("Damage");
-            StartCoroutine(damageFlash());
+//            StartCoroutine(damageFlash());
             Debug.Log(currentHealth);
         }
        
@@ -46,14 +46,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-   private IEnumerator damageFlash()
-   {
-        material.color = Color.red;
+//    private IEnumerator damageFlash()
+//    {
+//         material.color = Color.red;
 
-        yield return new WaitForSeconds(1.0f);
+//         yield return new WaitForSeconds(1.0f);
         
-        material.color = originalColor;
-   }
+//         material.color = originalColor;
+//    }
 
     // Method: Called when a heart comes into contact with the player (Heart.cs)
     public void IncreasePlayerHealth(int health)

@@ -34,7 +34,7 @@ public class GameBehaviour : MonoBehaviour
     public void updateHighScore(int value)
     {   
         highScore += value;
-        Debug.Log("Highscore: " + highScore);
+        //Debug.Log("Highscore: " + highScore);
 
         // Check if the player has a high enough score to reach the next level
         checkScore();

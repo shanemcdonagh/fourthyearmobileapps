@@ -11,10 +11,15 @@ public class Heart : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         // If the powerup is spawned on an obstacle
-        if (other.gameObject.GetComponent<Obstacle>() != null) 
+        if(other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Power")
         {
+           // Debug.Log("Destroyed " + gameObject.name);
             Destroy(gameObject);
-            return;
+        }
+
+        if(gameObject.name.Contains("Heart"))
+        {
+            
         }
         
         // Check if the gameobject in question is the player

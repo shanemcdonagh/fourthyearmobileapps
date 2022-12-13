@@ -20,5 +20,10 @@ public class Obstacle : MonoBehaviour
             // Cause damage to the player based on damage set
             GameObject.FindObjectOfType<PlayerHealth>().TakePlayerDamage(damage);
         }
+        else if(collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Power")
+        {
+           // Debug.Log("Destroyed " + gameObject.name);
+            Destroy(collider.gameObject);
+        }
     }
 }

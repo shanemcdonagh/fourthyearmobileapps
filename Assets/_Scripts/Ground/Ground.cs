@@ -8,6 +8,8 @@ public class Ground : MonoBehaviour
     // Instance variable - To use methods within GroundSpawner
     GroundSpawner gs;
     public List<GameObject> obstacles;
+    public List<GameObject> obstaclesLvl2;
+    public List<GameObject> obstaclesLvl3;
     public List<GameObject> powers;
     public int[] powerRarity;
     private bool firstPlatform;
@@ -23,6 +25,7 @@ public class Ground : MonoBehaviour
             SpawnPowers();
         }
         
+        for(int i = 0; i < 3; i++)
         SpawnEnemyObstacle();  
     }
 
@@ -66,30 +69,46 @@ public class Ground : MonoBehaviour
         }
 
         // Shuffle the list of obstacles to use
-        Utils.Shuffle(obstacles);
+        //Utils.Shuffle(obstacles);
 
         // Select a random point to spawn the obstacle
         int randomSpawnPoint = Random.Range(2,5);
 
-        // Select the first obstacle in the array initially
-        GameObject obstacle = obstacles[0];
+        int currentLevel = GameObject.FindObjectOfType<GameBehaviour>().GetLevel();
+        Debug.Log("Current Level: " + currentLevel);
 
-        // Attempt at spawning obstacles based on the current level
-        // do
-        // {
-        //     obstacle = obstacles[Random.Range(0,3)];
-        // } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > GameObject.FindObjectOfType<GameBehaviour>().GetLevel());
+        GameObject obstacle = null;
+        int obstacleNumber;
 
-        // Firstly chooses a random obstacle and then continues to do so until it picks a random obstacle that can be spawned at the current level
-        // do
-        // {
-            // Select a random obstacle
-            int obstacleNumber = Random.Range(0,5);
+        if(currentLevel == 1)
+        {
+            obstacleNumber = Random.Range(0, obstacles.Count);
+            Debug.Log("Level 1");
+            
+            // Shuffle the list of obstacles to use
+            Utils.Shuffle(obstacles);
+
             obstacle = obstacles[obstacleNumber];
-            //Debug.Log("Current Level: " + GameObject.FindObjectOfType<GameBehaviour>().GetLevel());
+        }
+        else if(currentLevel == 2)
+        {
+            obstacleNumber = Random.Range(0, obstaclesLvl2.Count);
+            Debug.Log("Level 2");
 
-        // } while(obstacle.GetComponent<Obstacle>().ObstacleLevel > 2);
+            // Shuffle the list of obstacles to use
+            Utils.Shuffle(obstaclesLvl2);
 
+            obstacle = obstaclesLvl2[obstacleNumber];
+        }
+        else if(currentLevel == 3)
+        {
+            obstacleNumber = Random.Range(0, obstaclesLvl3.Count);
+
+            // Shuffle the list of obstacles to use
+            Utils.Shuffle(obstaclesLvl3);
+
+            obstacle = obstaclesLvl3[obstacleNumber];
+        }
 
         if(obstacle.name.Contains("Long Stone Wall"))
         {
@@ -126,7 +145,8 @@ public class Ground : MonoBehaviour
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Select a random power from the list
-        int powerNumber = Random.Range(0,5);
+        int powerNumber = Random.Range(0,powers.Count);
+        Debug.Log("Current power: " + powers[powerNumber].name);
         GameObject power = powers[powerNumber];
 
        // while(Random.Range(0,100) <= powerRarity[powerNumber])

@@ -13,18 +13,18 @@ public class UIControls : MonoBehaviour
     
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
+    [SerializeField] private TextMeshProUGUI levelText;
 
     // Variables
     private float score = 0;
 
-    //public int timer;
-    //public TextMeshProUGUI timerText;
-
     // Start is called before the first frame update
     void Start()
     {
+        levelText.gameObject.SetActive(false);
         gameOverMenu.SetActive(false);
         StartCoroutine(startCountdown());
+        StartCoroutine(NewLevelText("Level 1"));
     }
 
     // Update is called once per frame
@@ -73,7 +73,7 @@ public class UIControls : MonoBehaviour
     }
 
     // Reference: https://youtu.be/ulxXGht5D2U
-    IEnumerator startCountdown()
+    private IEnumerator startCountdown()
     {
         GameObject player = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
 
@@ -112,9 +112,16 @@ public class UIControls : MonoBehaviour
         foreach (var cat in cats)
         {
             cat.GetComponent<CatController>().enabled = true;
-        }
-    
+        }    
+    }
+
+    public IEnumerator NewLevelText(string level)
+    {
+        levelText.text = level;
+        levelText.gameObject.SetActive(true);
+
         // Wait a second
-       // yield return new WaitForSeconds(1f);        
+        yield return new WaitForSeconds(2f);
+        levelText.gameObject.SetActive(false);
     }
 }

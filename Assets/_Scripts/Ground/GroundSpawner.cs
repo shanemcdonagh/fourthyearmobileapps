@@ -18,7 +18,6 @@ public class GroundSpawner : MonoBehaviour
             nextGroundItem = floor.transform.GetChild(1).transform.position;
             floor.SetActive(true);
         }
-       // GameObject currentFloor = Instantiate(floorTile, nextGroundItem, Quaternion.identity);      
     }
 
     // Start is called before the first frame update

@@ -18,6 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     public static GameObject Player;
     private int distanceTravelled = 0;
 
+
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private TextMeshProUGUI gameOverDistanceText;
 
@@ -114,15 +115,21 @@ public class PlayerBehaviour : MonoBehaviour
     {
         int currentLevel = GameObject.FindObjectOfType<GameBehaviour>().GetLevel();
 
-        if(currentLevel == 2)
+        // Ensures that these if-else statements don't execute continously by checking if playerSpeed is already set to new speed
+        if(currentLevel == 2 && playerSpeed != 15.0f)
         {
             // Update player speed to 10
             playerSpeed = 15.0f;
+            
+            StartCoroutine(GameObject.FindObjectOfType<UIControls>().NewLevelText("Level 2"));
+           
         }
-        else if(currentLevel == 3)
+        else if(currentLevel == 3 && playerSpeed != 20.0f)
         {
             // Update player speed to 12
             playerSpeed = 20.0f;
+
+            StartCoroutine(GameObject.FindObjectOfType<UIControls>().NewLevelText("Level 3"));
         }
     }
 }

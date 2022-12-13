@@ -97,7 +97,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 7122256533539397339}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.89372694
   m_Height: 1.7874539
   m_Direction: 1
@@ -135,6 +135,8 @@ MonoBehaviour:
   plane:
     serializedVersion: 2
     m_Bits: 64
+  distanceText: {fileID: 0}
+  gameOverDistanceText: {fileID: 0}
 --- !u!114 &1209958558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  material: {fileID: 0}
 --- !u!1001 &7122256532918518859
 PrefabInstance:
   m_ObjectHideFlags: 0

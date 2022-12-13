@@ -30,7 +30,7 @@ public class Star : MonoBehaviour
         }
         else if(other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Power")
         {
-            Debug.Log("Destroyed");
+          //  Debug.Log("Destroyed");
             Destroy(gameObject);
         }
     }
