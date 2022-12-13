@@ -26,9 +26,10 @@ public class Ground : MonoBehaviour
         }
         
         for(int i = 0; i < 3; i++)
-        SpawnEnemyObstacle();  
+        {
+            SpawnEnemyObstacle();  
+        } 
     }
-
 
     // Method: Triggered when an object or collider exits the collider on the current game object
     private void OnTriggerExit(Collider other) 
