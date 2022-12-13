@@ -17,13 +17,10 @@ public class Heart : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(gameObject.name.Contains("Heart"))
-        {
-            
-        }
+      
         
         // Check if the gameobject in question is the player
-        if(other.gameObject.tag == "Player" && GameObject.FindObjectOfType<PlayerHealth>().GetCurrentHealth() < 100)
+        if(other.gameObject.name.Contains("Player") && GameObject.FindObjectOfType<PlayerHealth>().GetCurrentHealth() < 100)
         {
             // Update the player score
             SoundManager.SoundManagerInstance.PlayClip("Health");

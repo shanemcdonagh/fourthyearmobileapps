@@ -68,6 +68,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
 
         // Reload the game scene
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 }

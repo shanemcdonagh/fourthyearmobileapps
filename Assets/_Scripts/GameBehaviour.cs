@@ -44,13 +44,13 @@ public class GameBehaviour : MonoBehaviour
     private void checkScore()
     {
         // If: The current score is greater than or equal to 200 and less than 500..
-        if(highScore >= 200 && highScore < 500)
+        if(highScore >= 200 && highScore < 400)
         {
             // Change to level 2
             currLevel = 2;
             Debug.Log("Level 2");
         }
-        else if(highScore >= 500)
+        else if(highScore >= 210)
         {
             // Change to level 3
             currLevel = 3;

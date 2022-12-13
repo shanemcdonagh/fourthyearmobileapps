@@ -13,8 +13,7 @@ public class CameraScript : MonoBehaviour
         offset = transform.position - PlayerBehaviour.Player.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         // Retrieve the current position of the player with an offset
         Vector3 position = PlayerBehaviour.Player.transform.position + offset;

@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter(Collider collider) 
     {
         // Check if the gameobject in question is the player
-        if(collider.gameObject.tag == "Player")
+        if(collider.gameObject.name.Contains("Player"))
         {
             // Cause damage to the player based on damage set
             GameObject.FindObjectOfType<PlayerHealth>().TakePlayerDamage(damage);
