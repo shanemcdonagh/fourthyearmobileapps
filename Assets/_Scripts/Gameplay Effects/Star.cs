@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 // Reference: https://answers.unity.com/questions/700255/powerup-script-to-make-player-invincible.html
+// Class: Used to give the player invincibility based on a timer
 public class Star : MonoBehaviour
 {
     public static bool isInvincible = false;
@@ -26,15 +26,17 @@ public class Star : MonoBehaviour
             isInvincible = true;
             SoundManager.SoundManagerInstance.PlayClip("Power Up");
            
+            // Start coroutine which determines length of invincibility
             StartCoroutine(SetVincibility());
         }
         else if(other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Power")
         {
-          //  Debug.Log("Destroyed");
+            // If it isn't the player, destroy the object
             Destroy(gameObject);
         }
     }
 
+    // Co-Routine: Used to set the invincibility of the player based on time
     public IEnumerator SetVincibility()
     {
         yield return new WaitForSeconds(invincibilityTimer);

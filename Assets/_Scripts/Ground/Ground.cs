@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class: Classifies a ground object, alongside the list of obstacles and powers it needs to spawn
 public class Ground : MonoBehaviour
 {
 
@@ -20,11 +21,13 @@ public class Ground : MonoBehaviour
         // Retrieve game object containing GroundSpawner script
         gs = GameObject.FindObjectOfType<GroundSpawner>();
 
+        // Spawn 16 powers on the ground
         for(int i = 0; i < 15; i++)
         {
             SpawnPowers();
         }
         
+        // Spawn 3 obstacles
         for(int i = 0; i < 3; i++)
         {
             SpawnEnemyObstacle();  
@@ -53,12 +56,14 @@ public class Ground : MonoBehaviour
         }
     }
 
+    // Method: Sets ground object to false to be re-used again later
     private void SetToFalse()
     {
         // Deactivate object so it returns to pool
         gameObject.SetActive(false);
     }
 
+    // Method: Used to spawn obstacles on current ground object
     private void SpawnEnemyObstacle()
     {
 
@@ -69,22 +74,17 @@ public class Ground : MonoBehaviour
             return;
         }
 
-        // Shuffle the list of obstacles to use
-        //Utils.Shuffle(obstacles);
-
         // Select a random point to spawn the obstacle
         int randomSpawnPoint = Random.Range(2,5);
 
+        // Check the current level and select an obstacle from the relevant list based on this
         int currentLevel = GameObject.FindObjectOfType<GameBehaviour>().GetLevel();
-        Debug.Log("Current Level: " + currentLevel);
-
         GameObject obstacle = null;
         int obstacleNumber;
 
         if(currentLevel == 1)
         {
             obstacleNumber = Random.Range(0, obstacles.Count);
-            Debug.Log("Level 1");
             
             // Shuffle the list of obstacles to use
             Utils.Shuffle(obstacles);
@@ -94,7 +94,6 @@ public class Ground : MonoBehaviour
         else if(currentLevel == 2)
         {
             obstacleNumber = Random.Range(0, obstaclesLvl2.Count);
-            Debug.Log("Level 2");
 
             // Shuffle the list of obstacles to use
             Utils.Shuffle(obstaclesLvl2);
@@ -117,6 +116,7 @@ public class Ground : MonoBehaviour
             randomSpawnPoint = 3;
         }
 
+        // Set the spawn point of the obstacle randomly
         Transform spawn = transform.GetChild(randomSpawnPoint).transform;
 
         // Instantiate the obstacle at the random spawn point and make it a parent of ground tile
@@ -125,11 +125,9 @@ public class Ground : MonoBehaviour
 
     }
 
+    // Method: Used to spawn the powers on the current ground object
     private void SpawnPowers()
     {
-
-        // Find a way to decrease odds of heart and increase odds of cheese
-
         // First, check if the player still is alive (has health remaining)
         if(PlayerBehaviour.isPlayerDead)
         {
@@ -163,9 +161,10 @@ public class Ground : MonoBehaviour
     }
 }
 
+// Method: Shuffles any list passed (Fisher Yeats Shuffle)
+// As seen in class
 public static class Utils
 {
-    // fisher yeats shuffle
     public static System.Random r = new System.Random();
     public static void Shuffle<T>(this IList<T> theList)
     {

@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
+// Class: Allows for the player to be controlled
 public class PlayerBehaviour : MonoBehaviour
 {
+    // Player attributes
     [SerializeField] float playerSpeed = 7.0f;
     [SerializeField] float jumpAmt;
     [SerializeField] LayerMask plane;
@@ -18,7 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     public static GameObject Player;
     private int distanceTravelled = 0;
 
-
+    // UI text to be updated
     [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private TextMeshProUGUI gameOverDistanceText;
 
@@ -28,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour
         // Initialize rigidbody type and GameObject from current GO this script is attached to (player)
         Player = this.gameObject;
         rb = gameObject.GetComponent<Rigidbody>();
+
+        // Continue to retrieve current player distance based on their speed
+        // Reference: https://youtu.be/53ATbkNrHjw
         InvokeRepeating("getDistance",0, 1 / playerSpeed);
     }
 
@@ -43,6 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
         // First, check if the player still is alive (has health remaining)
         if(!isPlayerDead)
         {
+            // Continously move the rigidbody forward
             Vector3 moveForward = transform.forward * playerSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveForward);
         } 
@@ -84,16 +89,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    // Method: Allows the player to jump
     private void jump()
     {
-        // Firstly, check if the player is currently on the ground
-        // Reference: https://youtu.be/x-EtYggJdP0
-
         // Retrieve the players center of origin
         float playerHeight = GetComponent<Collider>().bounds.size.y;
-
-        // Cast a ray downwards to players feet to see if it's touching the floor
-        //bool onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight / 2 + 0.1f, plane);
 
         if(Mathf.Floor(this.transform.position.y) == 1)
         {
@@ -103,6 +103,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     // Reference: https://youtu.be/53ATbkNrHjw
+    // Method: Keeps track of current distance made
     private void getDistance()
     {
         distanceTravelled = distanceTravelled + 1;
@@ -111,6 +112,7 @@ public class PlayerBehaviour : MonoBehaviour
         gameOverDistanceText.text = distanceTravelled.ToString() + "m";
     }
 
+    // Method: Increase player speed based on the current level
     private void increaseSpeed()
     {
         int currentLevel = GameObject.FindObjectOfType<GameBehaviour>().GetLevel();

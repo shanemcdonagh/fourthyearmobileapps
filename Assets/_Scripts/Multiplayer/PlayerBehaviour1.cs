@@ -71,11 +71,12 @@ public class PlayerBehaviour1 : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
-        {    
+        {   
             jump();   
         }
     }
 
+    // Method: Allows for the player to jump
     private void jump()
     {
         // Firstly, check if the player is currently on the ground
@@ -86,6 +87,7 @@ public class PlayerBehaviour1 : MonoBehaviour
         }
     }
 
+    // Method: Increases the players speed depending on the current level
     private void increaseSpeed()
     {
         int currentLevel = GameObject.FindObjectOfType<GameBehaviour>().GetLevel();

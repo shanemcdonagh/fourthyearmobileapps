@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class: Used to cause health damage to the player
 public class Obstacle : MonoBehaviour
 {
 
     [SerializeField] private int damage = 10;
-    [SerializeField] public int levelToSpawn;
-
-    // Specifies an obstacle level in which the object can spawn at
-    public int ObstacleLevel { get {return levelToSpawn;} }
 
     // Method: Called when another collider comes into contact with the current gameObject
     private void OnTriggerEnter(Collider collider) 
@@ -22,7 +19,7 @@ public class Obstacle : MonoBehaviour
         }
         else if(collider.gameObject.tag == "Obstacle" || collider.gameObject.tag == "Power")
         {
-           // Debug.Log("Destroyed " + gameObject.name);
+            // Otherwise, if it's another obstacle or power, destroy the other gameobject
             Destroy(collider.gameObject);
         }
     }

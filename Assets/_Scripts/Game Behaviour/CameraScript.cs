@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class: Ensures camera follows player while they progress through the game
 public class CameraScript : MonoBehaviour
 {
     private Vector3 offset;

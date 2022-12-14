@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class: Used to increase the players high score
 public class Powers : MonoBehaviour
 {
 
@@ -17,12 +18,13 @@ public class Powers : MonoBehaviour
             // Update the player score
             GameObject.FindObjectOfType<GameBehaviour>().updateHighScore(points);
             
+            // Play sound clip and destroy object
             SoundManager.SoundManagerInstance.PlayClip("Power Up");
             Destroy(gameObject);
         }
         else if(other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Power" || other.gameObject.tag == "Heart")
         {
-            Debug.Log("Destroyed");
+            // If it isn't the player, destroy the object
             Destroy(gameObject);
         }
     }

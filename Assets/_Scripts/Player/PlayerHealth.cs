@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class: Allows for player to have health and take damage
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    //[SerializeField] private Material material;
     private int currentHealth;
     private Color originalColor;
     //private float damageTime = 0.15f;
@@ -22,12 +22,6 @@ public class PlayerHealth : MonoBehaviour
         //originalColor = material.color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Method: Called when the obstacle comes into contact with the player
     public void TakePlayerDamage(int damage)
     {
@@ -36,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= damage;
             GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
             SoundManager.SoundManagerInstance.PlayClip("Damage");
-//            StartCoroutine(damageFlash());
+            //StartCoroutine(damageFlash());
             Debug.Log(currentHealth);
         }
        
@@ -58,11 +52,12 @@ public class PlayerHealth : MonoBehaviour
     // Method: Called when a heart comes into contact with the player (Heart.cs)
     public void IncreasePlayerHealth(int health)
     {
+        // If the player has health to heal and isn't dead..
         if(currentHealth < 100 && currentHealth > 0)
         {
+            // Update the health and UI
             currentHealth+=health;
             GameObject.FindObjectOfType<HealthUI>().UpdateHealthBar(currentHealth);
-            Debug.Log(currentHealth);
         }
     }
 }

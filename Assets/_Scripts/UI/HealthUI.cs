@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 
 // Reference: https://youtu.be/BLfNP4Sc_iA
+// Method: Used for health bar UI
 public class HealthUI : MonoBehaviour
 {
 

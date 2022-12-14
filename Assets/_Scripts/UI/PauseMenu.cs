@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Method: Used for in game menu and for game over control
 public class PauseMenu : MonoBehaviour
 {
 
@@ -46,7 +47,7 @@ public class PauseMenu : MonoBehaviour
         gamePaused = true;
     }
 
-    // Method: When quit menu is pressed, this method is invoked
+    // Method: When quit menu is pressed, this method is invoked (also used by game over menu)
     public void LoadMenu()
     {
         Time.timeScale = 1f;
@@ -55,14 +56,14 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
     }
 
-    // Method: Used for resuming with a button click
+    // Method: Used for resuming with a button click 
     public void ResumeGame()
     {
         // Invoke private method to resume the game
         resume();
     }
 
-    // Method: When restart menu is pressed, this method is invoked
+    // Method: When restart menu is pressed, this method is invoked (also used by game over menu)
     public void RestartGame()
     {
         Time.timeScale = 1f;
