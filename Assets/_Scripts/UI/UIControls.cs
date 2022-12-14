@@ -84,15 +84,28 @@ public class UIControls : MonoBehaviour
     private IEnumerator startCountdown()
     {
         GameObject player1 = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
-        GameObject player2 = GameObject.FindObjectOfType<PlayerBehaviour1>().gameObject;
+        GameObject player2 = null;
+
+        if(GameObject.Find("Player Two"))
+        {
+            player2 = GameObject.FindObjectOfType<PlayerBehaviour1>().gameObject;
+        }
+        
 
         // Lets other gameObjects scripts work first before stopping time (allows game over menu to be set back to false)
         yield return new WaitForSecondsRealtime(0.01f);
 
         // Pause time and prevent the pause menu to be used or the players to be moved
         Time.timeScale = 0f;
+        Debug.Log("Time: " + Time.timeScale);
         player1.GetComponent<PlayerBehaviour>().enabled = false;
-        player2.GetComponent<PlayerBehaviour1>().enabled = false;
+
+        if(player2 !=null)
+        {
+            player2.GetComponent<PlayerBehaviour1>().enabled = false;
+        }
+        
+        
         GameObject.FindObjectOfType<PauseMenu>().enabled = false;
         
         while(timer > 0)
@@ -113,7 +126,12 @@ public class UIControls : MonoBehaviour
 
         // Enable scripts 
         player1.GetComponent<PlayerBehaviour>().enabled = true;
-        player2.GetComponent<PlayerBehaviour1>().enabled = true;
+
+        if(player2 !=null)
+        {
+            player2.GetComponent<PlayerBehaviour1>().enabled = true;
+        }
+        
         GameObject.FindObjectOfType<PauseMenu>().enabled = true;
     }
 

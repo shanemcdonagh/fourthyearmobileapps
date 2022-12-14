@@ -541,6 +541,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1210920280, guid: 903fafbe76067254790f2d8972e198ca, type: 3}
+      propertyPath: distanceText
+      value: 
+      objectReference: {fileID: 1995693285}
+    - target: {fileID: 1210920280, guid: 903fafbe76067254790f2d8972e198ca, type: 3}
       propertyPath: gameOverMenu
       value: 
       objectReference: {fileID: 677897926}
