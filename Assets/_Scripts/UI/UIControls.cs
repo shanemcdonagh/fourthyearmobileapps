@@ -62,7 +62,7 @@ public class UIControls : MonoBehaviour
             }
             else
             {
-                SoundManager.SoundManagerInstance.PlayClip("GO");
+                //SoundManager.SoundManagerInstance.PlayClip("GO");
                 Time.timeScale = 0;
 
                 // Stop game music, play game over music and activate game over menu
@@ -75,13 +75,15 @@ public class UIControls : MonoBehaviour
     // Reference: https://youtu.be/ulxXGht5D2U
     private IEnumerator startCountdown()
     {
-        GameObject player = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+        GameObject player1 = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+        GameObject player2 = GameObject.FindObjectOfType<PlayerBehaviour1>().gameObject;
 
         // Lets other gameObjects scripts work first before stopping time (allows game over menu to be set back to false)
         yield return new WaitForSecondsRealtime(0.01f);
 
         Time.timeScale = 0f;
-        player.GetComponent<PlayerBehaviour>().enabled = false;
+        player1.GetComponent<PlayerBehaviour>().enabled = false;
+        player2.GetComponent<PlayerBehaviour1>().enabled = false;
         GameObject.FindObjectOfType<PauseMenu>().enabled = false;
         
         var cats = GameObject.FindObjectsOfType<CatController>();
@@ -106,7 +108,8 @@ public class UIControls : MonoBehaviour
         // Toggle the text off 
         timerText.gameObject.SetActive(false);
         Time.timeScale = 1f;
-        player.GetComponent<PlayerBehaviour>().enabled = true;
+        player1.GetComponent<PlayerBehaviour>().enabled = true;
+        player2.GetComponent<PlayerBehaviour1>().enabled = true;
         GameObject.FindObjectOfType<PauseMenu>().enabled = true;
 
         foreach (var cat in cats)
